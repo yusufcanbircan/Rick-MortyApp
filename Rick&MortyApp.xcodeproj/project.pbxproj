@@ -23,6 +23,9 @@
 		BBC6EB03299C05620034355F /* RMLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6EB02299C05620034355F /* RMLocation.swift */; };
 		BBC6EB05299C05690034355F /* RMEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6EB04299C05690034355F /* RMEpisode.swift */; };
 		BBC6EB07299C05710034355F /* RMCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6EB06299C05710034355F /* RMCharacter.swift */; };
+		BBC6EB09299D0A050034355F /* RMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6EB08299D0A050034355F /* RMService.swift */; };
+		BBC6EB0B299D0A100034355F /* RMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6EB0A299D0A100034355F /* RMRequest.swift */; };
+		BBC6EB0D299D0A1C0034355F /* RMEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC6EB0C299D0A1C0034355F /* RMEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		BBC6EB02299C05620034355F /* RMLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLocation.swift; sourceTree = "<group>"; };
 		BBC6EB04299C05690034355F /* RMEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEpisode.swift; sourceTree = "<group>"; };
 		BBC6EB06299C05710034355F /* RMCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacter.swift; sourceTree = "<group>"; };
+		BBC6EB08299D0A050034355F /* RMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMService.swift; sourceTree = "<group>"; };
+		BBC6EB0A299D0A100034355F /* RMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRequest.swift; sourceTree = "<group>"; };
+		BBC6EB0C299D0A1C0034355F /* RMEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +195,9 @@
 		BBC6EAF6299C03510034355F /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
+				BBC6EB08299D0A050034355F /* RMService.swift */,
+				BBC6EB0A299D0A100034355F /* RMRequest.swift */,
+				BBC6EB0C299D0A1C0034355F /* RMEndpoint.swift */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -344,9 +353,12 @@
 			files = (
 				BBC6EB01299C04BB0034355F /* RMSettingsViewController.swift in Sources */,
 				BBC6EAC3299822560034355F /* RMTabBarController.swift in Sources */,
+				BBC6EB09299D0A050034355F /* RMService.swift in Sources */,
 				BBC6EB05299C05690034355F /* RMEpisode.swift in Sources */,
 				BBC6EABF299822560034355F /* AppDelegate.swift in Sources */,
+				BBC6EB0D299D0A1C0034355F /* RMEndpoint.swift in Sources */,
 				BBC6EAFF299C04B20034355F /* RMEpisodesViewController.swift in Sources */,
+				BBC6EB0B299D0A100034355F /* RMRequest.swift in Sources */,
 				BBC6EB03299C05620034355F /* RMLocation.swift in Sources */,
 				BBC6EAC9299822560034355F /* Rick_MortyApp.xcdatamodeld in Sources */,
 				BBC6EAC1299822560034355F /* SceneDelegate.swift in Sources */,
