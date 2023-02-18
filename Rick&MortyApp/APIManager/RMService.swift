@@ -41,9 +41,21 @@ final class RMService {
                 return
             }
             
-        }
-        
+            do {
+                
+                let json = try JSONSerialization.jsonObject(with: data)
+                print(String(describing: json))
+                
+            }
+            catch {
+                completion(.failure(error))
+                
+            }
+            
+        }; task.resume()
     }
+    
+    
     
     // MARK: - private
     
