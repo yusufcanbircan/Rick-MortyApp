@@ -63,5 +63,5 @@ final class RMRequest {
 }
 
 extension RMRequest {
-    static let listCharactersrequest = RMRequest(endpoint: .character)
+    static let listCharactersRequest = RMRequest(endpoint: .character)
 }
