@@ -18,12 +18,12 @@ final class RMCharactersViewController: UIViewController, RMCharacterListViewDel
         view.backgroundColor = .systemBackground
         title = "Characters"
         setUpView()
-        
     }
     
     private func setUpView() {
         characterListView.delegate = self
         view.addSubview(characterListView)
+        
         NSLayoutConstraint.activate([
             characterListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             characterListView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
