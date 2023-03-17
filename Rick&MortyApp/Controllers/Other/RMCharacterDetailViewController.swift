@@ -62,30 +62,54 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        let sectionType = viewModel.sections[section]
+        
+        switch sectionType {
+        case .photo:
             return 1
-        case 1:
-            return 7
-        case 2:
-            return 8
-        default:
-            return 1
+        case .information(let viewModels):
+            return viewModels.count
+        case .episodes(let viewModels):
+            return viewModels.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         
+        let sectionType = viewModel.sections[indexPath.section]
         
-        if indexPath.section == 0 {
-            cell.backgroundColor = .systemBlue
-        } else if indexPath.section == 1 {
-            cell.backgroundColor = .systemGreen
-        } else {
-            cell.backgroundColor = .systemRed
+        switch sectionType {
+        case .photo(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RMCharacterPhotoCollectionViewCell.cellIdentifier,
+                for: indexPath
+            ) as? RMCharacterPhotoCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(viewModel: viewModel)
+            cell.backgroundColor = .systemYellow
+            return cell
+        case .information(let viewModels):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RMCharacterInfoCollectionViewCell.cellIdentifier,
+                for: indexPath
+            ) as? RMCharacterInfoCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(viewModel: viewModels[indexPath.row])
+            cell.backgroundColor = .systemOrange
+            return cell
+        case .episodes(let viewModels):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RMCharacterEpisodeCollectionViewCell.cellIdentifier,
+                for: indexPath
+            ) as? RMCharacterEpisodeCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(viewModel: viewModels[indexPath.row])
+            cell.backgroundColor = .systemPink
+            return cell
         }
-        
-        return cell
+
     }
 }
