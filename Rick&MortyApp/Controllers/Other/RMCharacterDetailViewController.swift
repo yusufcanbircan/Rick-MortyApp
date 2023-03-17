@@ -87,8 +87,8 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
                 fatalError()
             }
             cell.configure(viewModel: viewModel)
-            cell.backgroundColor = .systemYellow
             return cell
+            
         case .information(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: RMCharacterInfoCollectionViewCell.cellIdentifier,
@@ -97,8 +97,8 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
                 fatalError()
             }
             cell.configure(viewModel: viewModels[indexPath.row])
-            cell.backgroundColor = .systemOrange
             return cell
+            
         case .episodes(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: RMCharacterEpisodeCollectionViewCell.cellIdentifier,
@@ -107,7 +107,6 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
                 fatalError()
             }
             cell.configure(viewModel: viewModels[indexPath.row])
-            cell.backgroundColor = .systemPink
             return cell
         }
 
