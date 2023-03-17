@@ -62,7 +62,16 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 7
+        case 2:
+            return 8
+        default:
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -72,7 +81,7 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
         if indexPath.section == 0 {
             cell.backgroundColor = .systemBlue
         } else if indexPath.section == 1 {
-            cell.backgroundColor = .systemPink
+            cell.backgroundColor = .systemGreen
         } else {
             cell.backgroundColor = .systemRed
         }
