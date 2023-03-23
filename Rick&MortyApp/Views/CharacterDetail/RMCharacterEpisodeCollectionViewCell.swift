@@ -77,7 +77,7 @@ final class RMCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         airDateLabel.text = nil
     }
     
-    public func configure(viewModel: RMCharacterEpisodeCollectionViewCellViewModel) {
+    public func configure(with viewModel: RMCharacterEpisodeCollectionViewCellViewModel) {
         viewModel.registerForData { [weak self] data in
             // already in main queue
             self?.nameLabel.text = data.name
