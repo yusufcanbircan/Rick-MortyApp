@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class RMEpisodeDetailViewController: UIViewController {
+final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailViewViewModelDelegate {
+
     private let viewModel: RMEpisodeDetailViewViewModel
-    
     private let detailView = RMEpisodeDetailView()
     
     // MARK: - Init
@@ -20,7 +20,6 @@ final class RMEpisodeDetailViewController: UIViewController {
     }
     required init?(coder: NSCoder) {
         fatalError()
-        
     }
     
     // MARK: - Lifecycle
@@ -28,15 +27,16 @@ final class RMEpisodeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(detailView)
-        
         title = "Episode"
         addConstraints()
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .action,
             target: self,
             action: #selector(didShareTap)
         )
+        
+        viewModel.delegate = self
+        viewModel.fetchEpisodeData()
     }
     
     private func addConstraints() {
@@ -52,4 +52,11 @@ final class RMEpisodeDetailViewController: UIViewController {
     private func didShareTap() {
         
     }
+    
+    // MARK: - Delegate
+    
+    func didFetchEpisodeDetails() {
+        detailView.configure(with: viewModel)
+    }
+    
 }

@@ -23,14 +23,10 @@ final class RMEpisodeDetailViewViewModel {
     
     init(endpointUrl: URL?) {
         self.endpointUrl = endpointUrl
-        fetchEpisode()
     }
     
     // MARK: - Public
-    
-    // MARK: - Private
-    
-    private func fetchEpisode() {
+    public func fetchEpisodeData() {
         guard let url = endpointUrl,
               let request = RMRequest(url: url)
         else {
@@ -48,6 +44,7 @@ final class RMEpisodeDetailViewViewModel {
         }
     }
     
+    // MARK: - Private
     private func fetchRelatedCharacters(episode: RMEpisode) {
         
         let requests: [RMRequest] = episode.characters.compactMap({
