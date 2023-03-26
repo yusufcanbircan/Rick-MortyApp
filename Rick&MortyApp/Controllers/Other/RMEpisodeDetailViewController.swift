@@ -15,7 +15,7 @@ final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailView
     // MARK: - Init
     
     init(url: URL?) {
-        self.viewModel = .init(endpointUrl: url)
+        self.viewModel = RMEpisodeDetailViewViewModel(endpointUrl: url)
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -36,7 +36,7 @@ final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailView
         )
         
         viewModel.delegate = self
-        viewModel.fetchEpisodeData()
+        viewModel.fetchEpisode()
     }
     
     private func addConstraints() {

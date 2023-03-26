@@ -49,7 +49,7 @@ final class RMEpisodesViewController: UIViewController, RMEpisodeListViewDelegat
         ])
     }
     
-    // MARK: - RMCharacterListViewDelegate
+    // MARK: - RMEpisodeListViewDelegate
     
     func rmEpisodeListView(_ episodeListView: RMEpisodeListView, didSelectEpisode episode: RMEpisode) {
         

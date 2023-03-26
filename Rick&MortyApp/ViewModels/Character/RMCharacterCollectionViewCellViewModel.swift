@@ -13,6 +13,8 @@ struct RMCharacterCollectionViewCellViewModel: Hashable, Equatable {
     private let characterStatus: RMCharacterStatus
     private let characterImageUrl: URL?
     
+    // MARK: - Hash
+    
     static func == (lhs: RMCharacterCollectionViewCellViewModel, rhs: RMCharacterCollectionViewCellViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
