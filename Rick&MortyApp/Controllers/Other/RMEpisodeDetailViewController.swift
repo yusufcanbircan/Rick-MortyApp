@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailViewViewModelDelegate {
+final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailViewViewModelDelegate, RMEpisodeDetailViewDelegate {
 
     private let viewModel: RMEpisodeDetailViewViewModel
     private let detailView = RMEpisodeDetailView()
@@ -34,7 +34,7 @@ final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailView
             target: self,
             action: #selector(didShareTap)
         )
-        
+        detailView.delegate = self
         viewModel.delegate = self
         viewModel.fetchEpisode()
     }
@@ -53,7 +53,19 @@ final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailView
         
     }
     
-    // MARK: - Delegate
+    // MARK: - DetailView Delegate
+    
+    func rmEpisodeDetailView(
+        _ detailView: RMEpisodeDetailView,
+        didSelect character: RMCharacter
+    ) {
+        let vc = RMCharacterDetailViewController(viewModel: .init(character: character))
+        vc.title = character.name
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - viewModel Delegate
     
     func didFetchEpisodeDetails() {
         detailView.configure(with: viewModel)
