@@ -9,13 +9,26 @@ import UIKit
 
 /// Controller to show or search for Locations
 final class RMLocationsViewController: UIViewController {
+    
+    private let primaryView = RMLocationView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
         title = "Locations"
+        view.addSubview(primaryView)
         addSearchButton()
+        addConstraints()
+    }
+    
+    private func addConstraints() {
+        NSLayoutConstraint.activate([
+            primaryView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            primaryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            primaryView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            primaryView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+        ])
     }
     
     private func addSearchButton() {
