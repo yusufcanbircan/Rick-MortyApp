@@ -25,7 +25,8 @@ final class RMLocationView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.alpha = 0
         tableView.isHidden = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(RMLocationTableViewCell.self,
+                           forCellReuseIdentifier: RMLocationTableViewCell.cellIdentifier)
         return tableView
     }()
     
@@ -46,6 +47,7 @@ final class RMLocationView: UIView {
         spinner.startAnimating()
         addSubviews(tableView, spinner)
         addConstraints()
+        setUpTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -53,6 +55,11 @@ final class RMLocationView: UIView {
     }
     
     // MARK: Private
+    
+    private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
@@ -72,4 +79,30 @@ final class RMLocationView: UIView {
         self.viewModel = viewModel
     }
 
+}
+
+extension RMLocationView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension RMLocationView: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.cellViewModels.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cellViewModels = viewModel?.cellViewModels else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: RMLocationTableViewCell.cellIdentifier,
+            for: indexPath
+        ) as? RMLocationTableViewCell else {
+            fatalError()
+        }
+        let cellViewModel = cellViewModels[indexPath.row]
+        cell.textLabel?.text = cellViewModel.name
+        return cell
+    }
 }
