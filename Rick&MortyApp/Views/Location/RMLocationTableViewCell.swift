@@ -21,7 +21,8 @@ final class RMLocationTableViewCell: UITableViewCell {
     private let typeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .secondaryLabel
         
         return label
     }()
@@ -29,8 +30,9 @@ final class RMLocationTableViewCell: UITableViewCell {
     private let dimensionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .medium)
-        
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .tertiaryLabel
+    
         return label
     }()
     
@@ -39,6 +41,7 @@ final class RMLocationTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubviews(nameLabel, typeLabel, dimensionLabel)
+        accessoryType = .disclosureIndicator
         addConstraints()
     }
     
