@@ -40,7 +40,7 @@ final class RMLocationViewViewModel {
     // MARK: Public
     
     public func location(at index: Int) -> RMLocation? {
-        guard index <= locations.count else { return nil }
+        guard index < locations.count, index >= 0 else { return nil }
         return self.locations[index]
     }
     
@@ -56,7 +56,7 @@ final class RMLocationViewViewModel {
                 DispatchQueue.main.async {
                     self?.delegate?.didFetchInitialLocations()
                 }
-            case .failure(let error):
+            case .failure:
                 break
             }
         }
