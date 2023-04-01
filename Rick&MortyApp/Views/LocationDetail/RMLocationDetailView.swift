@@ -1,24 +1,24 @@
 //
-//  RMEpisodeDetailView.swift
+//  RMLocationDetailView.swift
 //  Rick&MortyApp
 //
-//  Created by Yusuf Can Bircan on 23.03.2023.
+//  Created by Yusuf Can Bircan on 1.04.2023.
 //
 
 import UIKit
 
-protocol RMEpisodeDetailViewDelegate: AnyObject {
-    func rmEpisodeDetailView(
-        _ detailView: RMEpisodeDetailView,
+protocol RMLocationDetailViewDelegate: AnyObject {
+    func rmLocationDetailView(
+        _ detailView: RMLocationDetailView,
         didSelect character: RMCharacter
     )
 }
 
-final class RMEpisodeDetailView: UIView {
+final class RMLocationDetailView: UIView {
      
-     public weak var delegate: RMEpisodeDetailViewDelegate?
+     public weak var delegate: RMLocationDetailViewDelegate?
      
-     private var viewModel: RMEpisodeDetailViewViewModel? {
+     private var viewModel: RMLocationDetailViewViewModel? {
          didSet {
              spinner.stopAnimating()
              self.collectionView?.reloadData()
@@ -94,12 +94,12 @@ final class RMEpisodeDetailView: UIView {
          return collectionView
      }
      
-     public func configure(with viewModel: RMEpisodeDetailViewViewModel) {
+     public func configure(with viewModel: RMLocationDetailViewViewModel) {
          self.viewModel = viewModel
      }
 }
 
-extension RMEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RMLocationDetailView: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel?.cellViewModels.count ?? 5
     }
@@ -159,13 +159,13 @@ extension RMEpisodeDetailView: UICollectionViewDelegate, UICollectionViewDataSou
             break
         case .characters:
             guard let character = viewModel.character(at: indexPath.row) else { return }
-            delegate?.rmEpisodeDetailView(self, didSelect: character)
+            delegate?.rmLocationDetailView(self, didSelect: character)
             
         }
     }
 }
 
-extension RMEpisodeDetailView {
+extension RMLocationDetailView {
     private func layout(for section: Int) -> NSCollectionLayoutSection {
         guard let sections = viewModel?.cellViewModels else {
             return createInfoLayout()
