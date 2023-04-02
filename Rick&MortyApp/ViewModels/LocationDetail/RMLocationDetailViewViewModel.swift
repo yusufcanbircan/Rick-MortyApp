@@ -99,16 +99,16 @@ final class RMLocationDetailViewViewModel {
             return RMRequest(url: $0)
         })
         
-//        let group = DispatchGroup()
+        let group = DispatchGroup()
         var characters: [RMCharacter] = []
         
         for request in requests {
-//           group.enter()
+           group.enter()
             RMService.shared.execute(request,
                                      expecting: RMCharacter.self) { result in
-//                defer {
-//                    group.leave()
-//                }
+                defer {
+                    group.leave()
+                }
                 
                 switch result {
                 case .success(let model):
@@ -118,19 +118,19 @@ final class RMLocationDetailViewViewModel {
                 }
             }
         }
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
+//            self.dataTuple = (
+//                location: location,
+//                characters: characters
+//            )
+//        }
+        
+        
+        group.notify(queue: .main) {
             self.dataTuple = (
                 location: location,
                 characters: characters
             )
         }
-        
-        
-//        group.notify(queue: .main) {
-//            self.dataTuple = (
-//                episode,
-//                characters
-//            )
-//        }
     }
 }

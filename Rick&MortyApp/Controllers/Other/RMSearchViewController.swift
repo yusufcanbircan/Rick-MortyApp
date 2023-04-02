@@ -14,12 +14,25 @@ final class RMSearchViewController: UIViewController {
             case character
             case location
             case episode
+            
+            var title: String {
+                switch self {
+                case .character:
+                    return "Search Character"
+                case .episode:
+                    return "Search Location"
+                case .location:
+                    return "Search Episode"
+                }
+            }
         }
         
         let type: `Type`
     }
     
     private let config: Config
+    
+    // MARK: - Init
     
     init(config: Config) {
         self.config = config
@@ -30,10 +43,11 @@ final class RMSearchViewController: UIViewController {
         fatalError()
     }
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Search"
+        title = config.type.title
         view.backgroundColor = .systemBackground
-        // Do any additional setup after loading the view.
     }
 }
