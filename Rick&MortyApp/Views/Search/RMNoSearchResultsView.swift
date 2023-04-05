@@ -31,6 +31,7 @@ final class RMNoSearchResultsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        isHidden = true
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(iconView, label)
         addConstraint()
@@ -54,7 +55,6 @@ final class RMNoSearchResultsView: UIView {
             label.bottomAnchor.constraint(equalTo: bottomAnchor),
             label.leftAnchor.constraint(equalTo: leftAnchor),
             label.rightAnchor.constraint(equalTo: rightAnchor),
-            label.heightAnchor.constraint(greaterThanOrEqualToConstant: 60),
             
         ])
     }
