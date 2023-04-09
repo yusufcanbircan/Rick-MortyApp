@@ -43,7 +43,7 @@ final class RMSearchInputView: UIView {
     // MARK: - Public
     
     public func configure(with viewModel: RMSearchInputViewViewModel) {
-        
+        searchBar.placeholder = viewModel.searchPlaceholderText
     }
 
 }

@@ -14,6 +14,10 @@ protocol RMLocationDetailViewViewModelDelegate: AnyObject {
 final class RMLocationDetailViewViewModel {
     private let endpointUrl: URL?
     
+    deinit {
+        
+    }
+    
     private var dataTuple: (location: RMLocation, characters: [RMCharacter])? {
         didSet {
             createCellViewModels()
@@ -90,24 +94,27 @@ final class RMLocationDetailViewViewModel {
             }))
         ]
     }
+    private let group = DispatchGroup()
     
     private func fetchRelatedCharacters(location: RMLocation) {
         
-        let requests: [RMRequest] = location.residents.compactMap({
+        let requests = location.residents.compactMap({
             return URL(string: $0)
-        }).compactMap({
+        })
+        let requestss: [RMRequest] = requests.compactMap({
             return RMRequest(url: $0)
         })
         
-        let group = DispatchGroup()
+        
         var characters: [RMCharacter] = []
         
-        for request in requests {
-           group.enter()
+        for request in requestss {
+            group.enter()
             RMService.shared.execute(request,
                                      expecting: RMCharacter.self) { result in
+
                 defer {
-                    group.leave()
+                    self.group.leave()
                 }
                 
                 switch result {
