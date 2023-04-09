@@ -24,6 +24,8 @@ final class RMSearchView: UIView {
         
         addSubviews(noResultView, searchInputView)
         addConstraints()
+        
+        searchInputView.configure(with: RMSearchInputViewViewModel(type: viewModel.config.type))
     }
     
     required init?(coder: NSCoder) {
